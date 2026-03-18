@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rahul Ramesh — Senior AI Data Scientist, GenAI Engineer, YouTuber. 6 years building production AI at Nielsen, Honeywell, and Volvo.">
+  <title>Rahul Ramesh — Senior AI Data Scientist</title>
+
+  <!-- Fonts: Outfit (headings) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <!-- Icons: Font Awesome solid style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══ COMMAND PALETTE ══ -->
+<div id="cmd-overlay">
+  <div id="cmd-palette">
+    <div class="cmd-input-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="cmd-input" type="text" placeholder="Jump to a section…" autocomplete="off">
+    </div>
+    <div id="cmd-results" class="cmd-results"></div>
+    <div class="cmd-footer">
+      <span class="cmd-key"><kbd>↑↓</kbd> Navigate</span>
+      <span class="cmd-key"><kbd>↵</kbd> Go</span>
+      <span class="cmd-key"><kbd>Esc</kbd> Close</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">Rahul<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#avarta">Projects</a></li>
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cmd" id="cmd-trigger">
+    <i class="fa-solid fa-magnifying-glass" style="font-size:0.75rem;"></i>
+    Search &nbsp; <kbd style="background:rgba(255,255,255,0.06);padding:0.1rem 0.4rem;border-radius:4px;border:1px solid rgba(255,255,255,0.1);font-size:0.72rem;">⌘K</kbd>
+  </button>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#about">About</a>
+  <a href="#agents">Agents</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#avarta">Projects</a>
+  <a href="#studio">Studio</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        Available for Senior AI Roles &amp; Collaborations
+      </div>
+      <h1 class="hero-name">
+        <span class="grad">Rahul</span><br>Ramesh
+      </h1>
+      <p class="hero-title">
+        <strong>Senior Data Scientist</strong> &nbsp;·&nbsp; GenAI Architect<br>
+        AI YouTuber &nbsp;·&nbsp; Google Gemini Highest Voted App Award Winner
+      </p>
+      <div class="hero-btns">
+        <a href="#agents" class="btn-primary">
+          <i class="fa-solid fa-robot"></i> See My Work
+        </a>
+        <a href="#contact" class="btn-outline">
+          <i class="fa-regular fa-paper-plane"></i> Get in Touch
+        </a>
+        <button class="btn-outline" id="cmd-trigger-hero" style="cursor:pointer;">
+          <i class="fa-solid fa-terminal"></i> ⌘K
+        </button>
+      </div>
+    </div>
+
+    <!-- Profile Photo -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <img
+        src="images/Rahul profile photo.jpeg"
+        alt="Rahul Ramesh"
+        class="hero-photo"
+      >
+      <div class="hero-photo-badge">
+        <i class="fa-solid fa-trophy" style="color:#f59e0b;font-size:0.75rem;"></i>
+        &nbsp; Google Gemini · Highest Voted
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ══ STATS BAR ══ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="6" data-suffix="+">0</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="3" data-suffix="+ yrs">0</div>
+        <div class="stat-label">GenAI Specialization</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad2-num" data-target="6" data-suffix="+">0</div>
+        <div class="stat-label">LLMs Deployed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="100" data-suffix="%">0</div>
+        <div class="stat-label">Logic Coverage</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad2-num" data-target="5" data-suffix="% MAPE">0</div>
+        <div class="stat-label">Forecast Accuracy</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="6" data-suffix="%">0</div>
+        <div class="stat-label">Fuel Efficiency Gain</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad2-num" data-target="20" data-suffix="%">0</div>
+        <div class="stat-label">Customer Cost Saved</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="section-label">WHO I AM</div>
+        <h2 class="section-title">
+          From Mechatronics<br>to Pioneering <span class="grad">GenAI</span>
+        </h2>
+        <p>Senior Data Scientist with <strong>6 years of experience</strong>, including a <strong>3+ year deep specialization in Generative AI</strong>. Currently at Nielsen, I architect autonomous multi-agent systems using LangGraph and build scalable ML forecasting pipelines on AWS SageMaker.</p>
+        <p>Previously at Honeywell and Volvo Trucks, delivering production-grade ML and GenAI solutions across supply chain, fuel efficiency, and audience measurement domains.</p>
+        <p>Hands-on expertise in <strong>LangChain, RAG architectures, Vector Databases,</strong> and <strong>LLM fine-tuning</strong>. Passionate about Responsible AI and mentoring junior scientists. Also a Math/AI YouTuber making complex AI concepts accessible — and a Google Gemini API Competition <strong>Highest Voted App</strong> winner.</p>
+        <div class="info-pills">
+          <span class="pill"><i class="fa-solid fa-location-dot"></i> Bengaluru, Karnataka</span>
+          <span class="pill"><i class="fa-solid fa-envelope"></i> rahulgullu1997@gmail.com</span>
+          <span class="pill"><i class="fa-solid fa-earth-asia"></i> EN · TA · HI · KN</span>
+          <span class="pill"><i class="fa-brands fa-youtube"></i> AI YouTuber</span>
+          <span class="pill"><i class="fa-solid fa-trophy"></i> Gemini Top-10</span>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.15s">
+        <div class="section-label">CAREER JOURNEY</div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="journey-content">
+            <small>2014 – 2020</small>
+            <h4>Mechanical &amp; Mechatronics Engineering</h4>
+            <p>Foundation in systems thinking, electronics, and mathematics — the bedrock of every model I build today.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot two"></div>
+          <div class="journey-content">
+            <small>2020 – 2024</small>
+            <h4>Classical ML → Production AI</h4>
+            <p>Built predictive pipelines at Dual Globe Solutions and Volvo Trucks. Mastered the full ML lifecycle from POC to deployment.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot three"></div>
+          <div class="journey-content">
+            <small>2024 – Present</small>
+            <h4>GenAI Architect &amp; Agent Builder</h4>
+            <p>Pioneering autonomous multi-agent systems at Nielsen. Driving GenAI adoption across Honeywell's VE/CE CoE using Vertex AI, GraphRAG, and LangGraph.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MULTI-AGENT SYSTEM ══ -->
+<section id="agents">
+  <div class="container">
+    <div class="section-label">NIELSEN — FLAGSHIP PROJECT</div>
+    <h2 class="section-title reveal">Autonomous <span class="grad">Multi-Agent</span> System</h2>
+    <p class="section-sub reveal">An orchestrated swarm of specialized AI agents that automate end-to-end validation of complex market research surveys — achieving 100% logic coverage across global markets.</p>
+
+    <div class="orchestrator reveal">
+      <div class="orch-box">
+        <div class="orch-pulse"></div>
+        <div class="orch-box-title">
+          <i class="fa-solid fa-microchip" style="color:var(--blue);margin-right:0.5rem;"></i>
+          LangGraph Orchestrator
+        </div>
+        <div class="orch-box-sub">Playwright · AWS SageMaker · Python</div>
+      </div>
+      <div class="orch-down"></div>
+    </div>
+
+    <div class="agent-flow reveal">
+      <div class="agent-card researcher">
+        <span class="agent-badge">AGENT 01</span>
+        <div class="agent-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>Researcher</h3>
+        <p>Ingests survey logic, maps question dependencies, and builds a semantic knowledge graph of all market research rules.</p>
+      </div>
+
+      <div class="flow-arrow">
+        <div class="flow-label">validates</div>
+        <div class="flow-line"></div>
+        <div class="flow-label" style="margin-top:4px">signals</div>
+        <div class="flow-line" style="background:linear-gradient(to left,var(--blue),var(--blue2))"></div>
+      </div>
+
+      <div class="agent-card navigator">
+        <span class="agent-badge">AGENT 02</span>
+        <div class="agent-icon"><i class="fa-solid fa-compass"></i></div>
+        <h3>Navigator</h3>
+        <p>Simulates real user behavior across survey flows using Playwright. Traverses branching logic and edge cases autonomously.</p>
+      </div>
+
+      <div class="flow-arrow">
+        <div class="flow-label">error feed</div>
+        <div class="flow-line" style="background:linear-gradient(to right,var(--blue2),var(--purple))"></div>
+        <div class="flow-label" style="margin-top:4px">confirms fix</div>
+        <div class="flow-line" style="background:linear-gradient(to left,var(--blue2),var(--purple))"></div>
+      </div>
+
+      <div class="agent-card healer">
+        <span class="agent-badge">AGENT 03</span>
+        <div class="agent-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h3>Healer</h3>
+        <p>Detects anomalies and logic failures surfaced by Navigator. Generates corrective patches and re-validates automatically.</p>
+      </div>
+    </div>
+
+    <div class="agent-tech-tags reveal">
+      <span class="tech-tag">LangGraph</span>
+      <span class="tech-tag">Playwright</span>
+      <span class="tech-tag">AWS SageMaker</span>
+      <span class="tech-tag">Amazon S3</span>
+      <span class="tech-tag">LightGBM</span>
+      <span class="tech-tag">Multi-Agent Orchestration</span>
+      <span class="tech-tag">Market Research Automation</span>
+      <span class="tech-tag">Python</span>
+    </div>
+
+    <div class="result-banner reveal">
+      <p>
+        <strong>100%</strong> logic coverage across global survey markets &nbsp;·&nbsp;
+        <strong>5% MAPE</strong> on QI Media Value Index forecasting &nbsp;·&nbsp;
+        <strong>Zero manual validation</strong> overhead
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">CAREER</div>
+    <h2 class="section-title reveal">Work <span class="grad">Experience</span></h2>
+
+    <div class="timeline" style="margin-top:3rem;">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company grad">Nielsen</div>
+              <div class="tl-role">Senior Data Scientist – Audience Measurement · Bengaluru</div>
+            </div>
+            <div class="tl-date">Mar 2025 – Present</div>
+          </div>
+          <ul>
+            <li>Architected an Autonomous Multi-Agent System (Researcher, Navigator, Healer) using LangGraph + Playwright for end-to-end survey validation achieving <span class="tl-highlight">100% logic coverage</span> globally.</li>
+            <li>Designed and deployed a scalable ML forecasting pipeline on LightGBM (AWS S3 + SageMaker) for the QI Media Value Index achieving <span class="tl-highlight">5% MAPE</span>.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">LangGraph</span>
+            <span class="tl-tag">Multi-Agent</span>
+            <span class="tl-tag">Playwright</span>
+            <span class="tl-tag">AWS SageMaker</span>
+            <span class="tl-tag">LightGBM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--blue2);"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company grad2">Honeywell</div>
+              <div class="tl-role">Data Scientist II – VE/CE COE · Bengaluru</div>
+            </div>
+            <div class="tl-date">Apr 2024 – Feb 2025</div>
+          </div>
+          <ul>
+            <li>Drove development of advanced Analytics, ML &amp; GenAI solutions within Honeywell's VE/CE CoE, optimizing supply chain and component engineering workflows.</li>
+            <li>Executed projects leveraging <span class="tl-highlight">Google Cloud Platform, Vertex AI,</span> and Snowflake for model training and deployment at scale.</li>
+            <li>Mentored and guided a high-performing team of junior scientists, interns, and AI engineers.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Vertex AI</span>
+            <span class="tl-tag">GCP</span>
+            <span class="tl-tag">Snowflake</span>
+            <span class="tl-tag">GenAI</span>
+            <span class="tl-tag">MLOps</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--purple);"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company" style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--purple);">Volvo Trucks</div>
+              <div class="tl-role">Data Scientist – Associate · Bengaluru</div>
+            </div>
+            <div class="tl-date">May 2021 – Mar 2024</div>
+          </div>
+          <ul>
+            <li>Designed ML pipeline for Fuel Efficiency prediction and used model coefficients for driver training — achieving <span class="tl-highlight">6% increase in fuel efficiency</span> and reduced carbon emissions.</li>
+            <li>Delivered DRIVE and MILE projects resulting in <span class="tl-highlight">20% reduction in customer costs</span>.</li>
+            <li>Full project lifecycle ownership: from POC creation and data engineering to model deployment.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">ML Pipelines</span>
+            <span class="tl-tag">Computer Vision</span>
+            <span class="tl-tag">IoT</span>
+            <span class="tl-tag">NLP</span>
+            <span class="tl-tag">Fleet Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--red);"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company" style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--muted);">Dual Globe Solutions</div>
+              <div class="tl-role">Data Scientist – Junior · Chennai</div>
+            </div>
+            <div class="tl-date">Mar 2020 – May 2021</div>
+          </div>
+          <ul>
+            <li>Performed data cleaning, statistical modelling, and built visualizations under senior guidance.</li>
+            <li>Designed a dynamic ML web app for predicting and classifying house images using Microsoft COCO transfer learning model.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Transfer Learning</span>
+            <span class="tl-tag">COCO</span>
+            <span class="tl-tag">Flask</span>
+            <span class="tl-tag">Statistics</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS NETWORK ══ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">EXPERTISE</div>
+    <h2 class="section-title reveal">Skill <span class="grad">Network</span></h2>
+    <p class="section-sub reveal">Hover nodes to explore. Size reflects proficiency. Colors indicate domain cluster.</p>
+    <canvas id="skill-canvas" class="reveal"></canvas>
+    <div style="display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.5rem;" class="reveal">
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#217bfe;display:inline-block;flex-shrink:0;"></span>GenAI &amp; Agents</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#64b8fb;display:inline-block;flex-shrink:0;"></span>Cloud Platforms</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#ac87eb;display:inline-block;flex-shrink:0;"></span>ML / Deep Learning</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#ee4d5d;display:inline-block;flex-shrink:0;"></span>Core / APIs</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;"></span>Data / Warehousing</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;"></span>DevOps / MLOps</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AVARTA LIFE ══ -->
+<section id="avarta">
+  <div class="container">
+    <div class="section-label">FEATURED PROJECT</div>
+    <div class="avarta-card reveal">
+      <div>
+        <div class="avarta-gemini-badge">
+          <i class="fa-solid fa-gem"></i>
+          Google Gemini API Competition — Highest Voted App
+        </div>
+        <h2>Avarta <span class="grad">Life</span></h2>
+        <p>A next-generation AI-powered avatar lifestyle application built for the Google Gemini API Competition. Leveraging Google's Gemini multimodal capabilities to create immersive, intelligent avatar experiences — awarded the <strong>Highest Voted App</strong> at the competition.</p>
+        <div class="avarta-features">
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-brain"></i></div>
+            Google Gemini API — multimodal intelligence at its core
+          </div>
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-bolt"></i></div>
+            Real-time avatar behavior powered by live data streams
+          </div>
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-comments"></i></div>
+            Conversational AI with contextual memory and persona
+          </div>
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-trophy"></i></div>
+            Highest Voted App — community favourite globally
+          </div>
+        </div>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://ai.google.dev/competition/projects/avarta-life?hl=en" target="_blank" class="btn-primary">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Project
+          </a>
+          <a href="https://github.com/Rahulramesh97" target="_blank" class="btn-outline">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="avarta-visual">
+        <div class="avarta-orb">
+          <div class="avarta-orb-ring"></div>
+          <div class="avarta-orb-ring2"></div>
+          <div class="avarta-orb-inner">
+            <div class="rank grad-num">#1</div>
+            <small>Highest Voted</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STUDIO ══ -->
+<section id="studio">
+  <div class="container">
+    <div class="section-label">CONTENT CREATOR</div>
+    <div class="studio-header reveal">
+      <div class="yt-icon"><i class="fa-brands fa-youtube"></i></div>
+      <div>
+        <h2 class="section-title" style="margin-bottom:0.3rem;">Intuitive <span class="grad">Mathematics</span></h2>
+        <p style="color:var(--muted);font-size:0.95rem;">Making complex AI &amp; Math concepts accessible to everyone</p>
+      </div>
+    </div>
+    <div class="video-grid">
+
+      <a class="video-card reveal" href="https://www.youtube.com/@rahul27812" target="_blank">
+        <div class="video-thumb vt-calculus">
+          <div class="vt-bg-art">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+              <defs>
+                <linearGradient id="gc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0844ff" stop-opacity="0.9"/><stop offset="100%" stop-color="#0a0e1a" stop-opacity="1"/></linearGradient>
+                <linearGradient id="gc2" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#217bfe" stop-opacity="0.3"/><stop offset="100%" stop-color="#64b8fb" stop-opacity="0.1"/></linearGradient>
+              </defs>
+              <rect width="400" height="225" fill="url(#gc1)"/>
+              <!-- Gradient descent curve -->
+              <path d="M20,40 Q80,180 150,140 Q220,100 270,160 Q320,200 380,90" stroke="#64b8fb" stroke-width="2.5" fill="none" opacity="0.6"/>
+              <!-- Loss curve (steeper) -->
+              <path d="M20,20 C60,20 90,180 180,160 C250,145 320,155 380,148" stroke="#217bfe" stroke-width="1.5" fill="none" opacity="0.35"/>
+              <!-- Grid lines -->
+              <line x1="0" y1="112" x2="400" y2="112" stroke="rgba(100,184,251,0.12)" stroke-width="1"/>
+              <line x1="200" y1="0" x2="200" y2="225" stroke="rgba(100,184,251,0.12)" stroke-width="1"/>
+              <!-- Descent arrows -->
+              <circle cx="150" cy="140" r="5" fill="#64b8fb" opacity="0.9"/>
+              <circle cx="270" cy="160" r="5" fill="#64b8fb" opacity="0.7"/>
+              <circle cx="360" cy="100" r="5" fill="#64b8fb" opacity="0.5"/>
+              <!-- Glow dot at minimum -->
+              <circle cx="380" cy="90" r="10" fill="#217bfe" opacity="0.4"/>
+              <circle cx="380" cy="90" r="5" fill="#64b8fb" opacity="1"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.2rem;background:linear-gradient(to top,rgba(4,8,20,0.92) 0%,transparent 55%);">
+              <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#64b8fb;margin-bottom:0.3rem;text-transform:uppercase;">Calculus for AI</div>
+              <div style="font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25;">The Math Behind<br>Gradient Descent</div>
+            </div>
+            <div style="position:absolute;top:0.9rem;right:0.9rem;font-size:2.8rem;font-family:'Outfit',sans-serif;font-weight:900;color:rgba(100,184,251,0.18);line-height:1;">∇</div>
+          </div>
+          <div class="video-overlay">
+            <div class="video-play"><i class="fa-solid fa-play"></i></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h4>The Math Behind Gradient Descent</h4>
+          <p>Intuitive Mathematics · AI Fundamentals</p>
+        </div>
+      </a>
+
+      <a class="video-card reveal" href="https://www.youtube.com/@rahul27812" target="_blank" style="transition-delay:0.1s">
+        <div class="video-thumb vt-transformer">
+          <div class="vt-bg-art">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+              <defs>
+                <linearGradient id="gt1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a0833"/><stop offset="100%" stop-color="#0d0618"/></linearGradient>
+              </defs>
+              <rect width="400" height="225" fill="url(#gt1)"/>
+              <!-- Attention head connections -->
+              <line x1="60" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1" opacity="0.4"/>
+              <line x1="120" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="180" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="2" opacity="0.8"/>
+              <line x1="240" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="300" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1" opacity="0.4"/>
+              <line x1="340" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="0.8" opacity="0.3"/>
+              <!-- Bottom layer -->
+              <line x1="200" y1="112" x2="80" y2="175" stroke="#64b8fb" stroke-width="1" opacity="0.4"/>
+              <line x1="200" y1="112" x2="160" y2="175" stroke="#64b8fb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="200" y1="112" x2="240" y2="175" stroke="#64b8fb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="200" y1="112" x2="320" y2="175" stroke="#64b8fb" stroke-width="1" opacity="0.4"/>
+              <!-- Token nodes top -->
+              <circle cx="60" cy="50" r="8" fill="#ac87eb" opacity="0.7"/>
+              <circle cx="120" cy="50" r="8" fill="#ac87eb" opacity="0.8"/>
+              <circle cx="180" cy="50" r="8" fill="#ac87eb" opacity="0.9"/>
+              <circle cx="240" cy="50" r="8" fill="#ac87eb" opacity="0.8"/>
+              <circle cx="300" cy="50" r="8" fill="#ac87eb" opacity="0.7"/>
+              <circle cx="340" cy="50" r="6" fill="#ac87eb" opacity="0.5"/>
+              <!-- Centre attention node -->
+              <circle cx="200" cy="112" r="18" fill="#ac87eb" opacity="0.15"/>
+              <circle cx="200" cy="112" r="11" fill="#ac87eb" opacity="0.9"/>
+              <!-- Bottom output nodes -->
+              <circle cx="80" cy="175" r="7" fill="#64b8fb" opacity="0.7"/>
+              <circle cx="160" cy="175" r="7" fill="#64b8fb" opacity="0.8"/>
+              <circle cx="240" cy="175" r="7" fill="#64b8fb" opacity="0.8"/>
+              <circle cx="320" cy="175" r="7" fill="#64b8fb" opacity="0.7"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.2rem;background:linear-gradient(to top,rgba(10,4,24,0.95) 0%,transparent 50%);">
+              <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#ac87eb;margin-bottom:0.3rem;text-transform:uppercase;">LLM Internals</div>
+              <div style="font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25;">How Transformers<br>Actually Work</div>
+            </div>
+            <div style="position:absolute;top:0.7rem;right:0.9rem;font-size:2.4rem;font-family:'Outfit',sans-serif;font-weight:900;color:rgba(172,135,235,0.2);line-height:1;">⊕</div>
+          </div>
+          <div class="video-overlay">
+            <div class="video-play"><i class="fa-solid fa-play"></i></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h4>How Transformers Actually Work</h4>
+          <p>Intuitive Mathematics · Deep Learning</p>
+        </div>
+      </a>
+
+      <a class="video-card reveal" href="https://www.youtube.com/@rahul27812" target="_blank" style="transition-delay:0.2s">
+        <div class="video-thumb vt-agents">
+          <div class="vt-bg-art">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+              <defs>
+                <linearGradient id="ga1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#001f0a"/><stop offset="100%" stop-color="#060606"/></linearGradient>
+              </defs>
+              <rect width="400" height="225" fill="url(#ga1)"/>
+              <!-- Agent graph edges -->
+              <line x1="200" y1="85" x2="100" y2="155" stroke="#22c55e" stroke-width="1.5" opacity="0.55"/>
+              <line x1="200" y1="85" x2="200" y2="170" stroke="#22c55e" stroke-width="1.5" opacity="0.55"/>
+              <line x1="200" y1="85" x2="300" y2="155" stroke="#22c55e" stroke-width="1.5" opacity="0.55"/>
+              <line x1="200" y1="85" x2="70" y2="65" stroke="#64b8fb" stroke-width="1" opacity="0.4"/>
+              <line x1="200" y1="85" x2="330" y2="60" stroke="#64b8fb" stroke-width="1" opacity="0.4"/>
+              <line x1="100" y1="155" x2="200" y2="170" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
+              <line x1="300" y1="155" x2="200" y2="170" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
+              <!-- Orchestrator -->
+              <circle cx="200" cy="85" r="22" fill="#22c55e" opacity="0.12"/>
+              <circle cx="200" cy="85" r="14" fill="#22c55e" opacity="0.85"/>
+              <!-- Sub-agents -->
+              <circle cx="100" cy="155" r="11" fill="#217bfe" opacity="0.85"/>
+              <circle cx="200" cy="170" r="11" fill="#217bfe" opacity="0.85"/>
+              <circle cx="300" cy="155" r="11" fill="#217bfe" opacity="0.85"/>
+              <!-- Input nodes -->
+              <circle cx="70" cy="65" r="7" fill="#64b8fb" opacity="0.6"/>
+              <circle cx="330" cy="60" r="7" fill="#64b8fb" opacity="0.6"/>
+              <!-- Pulse rings -->
+              <circle cx="200" cy="85" r="28" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.25"/>
+              <circle cx="200" cy="85" r="38" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.12"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.2rem;background:linear-gradient(to top,rgba(4,12,4,0.95) 0%,transparent 50%);">
+              <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#22c55e;margin-bottom:0.3rem;text-transform:uppercase;">Agent Systems</div>
+              <div style="font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25;">Building Multi-Agent AI<br>with LangGraph</div>
+            </div>
+            <div style="position:absolute;top:0.7rem;right:0.9rem;font-size:2.4rem;font-family:'Outfit',sans-serif;font-weight:900;color:rgba(34,197,94,0.18);line-height:1;">⬡</div>
+          </div>
+          <div class="video-overlay">
+            <div class="video-play"><i class="fa-solid fa-play"></i></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h4>Building Multi-Agent AI with LangGraph</h4>
+          <p>Intuitive Mathematics · GenAI Engineering</p>
+        </div>
+      </a>
+
+    </div>
+    <div class="studio-cta reveal">
+      <a href="https://www.youtube.com/@rahul27812" target="_blank" class="btn-primary">
+        <i class="fa-brands fa-youtube"></i> Visit the Channel
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GOVERNANCE ══ -->
+<section id="governance">
+  <div class="container">
+    <div class="section-label">RESPONSIBLE AI</div>
+    <h2 class="section-title reveal">AI Governance <span class="grad">&amp; Ethics</span></h2>
+    <p class="section-sub reveal">Building AI that is not just powerful, but trustworthy, explainable, and fair.</p>
+    <div class="gov-grid">
+
+      <div class="gov-card reveal">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap"><i class="fa-solid fa-gauge-high"></i></div>
+        <h3>Evaluation Frameworks</h3>
+        <p>Leveraging DeepEval and custom harnesses to continuously benchmark LLM outputs for factuality, toxicity, and bias across production systems.</p>
+      </div>
+
+      <div class="gov-card reveal" style="transition-delay:0.1s">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap" style="background:rgba(172,135,235,0.1);border-color:rgba(172,135,235,0.2);color:var(--purple);"><i class="fa-solid fa-eye"></i></div>
+        <h3>Explainability &amp; Transparency</h3>
+        <p>Implementing SHAP, LIME, and attention visualization to ensure stakeholders understand model decisions in high-stakes domains.</p>
+      </div>
+
+      <div class="gov-card reveal" style="transition-delay:0.2s">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap" style="background:rgba(100,184,251,0.1);border-color:rgba(100,184,251,0.2);color:var(--blue2);"><i class="fa-solid fa-database"></i></div>
+        <h3>Data Governance</h3>
+        <p>Designing PII-safe pipelines and implementing data lineage tracking to ensure compliance with enterprise data governance standards.</p>
+      </div>
+
+      <div class="gov-card reveal" style="transition-delay:0.3s">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap" style="background:rgba(238,77,93,0.1);border-color:rgba(238,77,93,0.2);color:var(--red);"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3>Bias &amp; Fairness</h3>
+        <p>Proactive bias auditing across demographic slices, ensuring ML models meet fairness criteria before production deployment in global markets.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">RECOMMENDATIONS</div>
+    <h2 class="section-title reveal">What Colleagues <span class="grad">Say</span></h2>
+  </div>
+  <div class="testimonial-slider">
+    <div class="testimonial-track">
+
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul is one of the most competent and skilled techies I have come across. His technical expertise and comprehension of difficult challenges has accelerated over time. I can see his development as he continuously works on his skills and strives to fine tune them periodically.</div>
+        <div class="t-author">
+          <div class="t-avatar">
+            <img src="images/ramasamy.png" alt="Ramasamy Muthukrishnan" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='flex'">
+          </div>
+          <div class="t-avatar-fallback" style="display:none;">RM</div>
+          <div>
+            <div class="t-name">Ramasamy Muthukrishnan</div>
+            <div class="t-role">Senior Data Scientist · Bank of America</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul's potential and exuberance towards work is very high. He is a multi-tasking professional. I have personally seen him working with curiosity and expertise in solving problems as an individual as well as a team. I wish him all the luck for the upcoming hustles.</div>
+        <div class="t-author">
+          <div class="t-avatar">
+            <img src="images/jhansi.png" alt="Pulaganti Jhansi" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='flex'">
+          </div>
+          <div class="t-avatar-fallback" style="display:none;">PJ</div>
+          <div>
+            <div class="t-name">Pulaganti Jhansi</div>
+            <div class="t-role">Business Analyst · Volvo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="t-quote">Highly efficient is the phrase that comes to my mind when I think about Rahul. He has the intuitive ability to smartly handle himself in any situation. As a senior, I am proud that he has skyrocketed his knowledge and understanding about challenging problems.</div>
+        <div class="t-author">
+          <div class="t-avatar">
+            <img src="images/nitish.png" alt="Nitish Kannan" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='flex'">
+          </div>
+          <div class="t-avatar-fallback" style="display:none;">NK</div>
+          <div>
+            <div class="t-name">Nitish Kannan</div>
+            <div class="t-role">Senior AI Developer · Deloitte</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul sets the bar for an intuitive understanding of Data Science concepts. His ability to understand a business use case and solve it was adept. He rapidly adapts to new functionalities and makes sure he excels in them adhering to the timelines.</div>
+        <div class="t-author">
+          <div class="t-avatar">
+            <img src="images/chandra.jpg" alt="Surya Chandra Teja" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='flex'">
+          </div>
+          <div class="t-avatar-fallback" style="display:none;">SC</div>
+          <div>
+            <div class="t-name">Surya Chandra Teja</div>
+            <div class="t-role">Deputy Manager Data Scientist · Volvo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicates for infinite loop -->
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul is one of the most competent and skilled techies I have come across. His technical expertise and comprehension of difficult challenges has accelerated over time. I can see his development as he continuously works on his skills.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/ramasamy.png" alt="Ramasamy"></div>
+          <div><div class="t-name">Ramasamy Muthukrishnan</div><div class="t-role">Senior Data Scientist · Bank of America</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul's potential and exuberance towards work is very high. He is a multi-tasking professional. I have personally seen him working with curiosity and expertise in solving problems both individually and as a team player.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/jhansi.png" alt="Jhansi"></div>
+          <div><div class="t-name">Pulaganti Jhansi</div><div class="t-role">Business Analyst · Volvo</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Highly efficient is the phrase that comes to my mind when I think about Rahul. He has the intuitive ability to smartly handle himself in any situation. I am proud that he has skyrocketed his knowledge.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/nitish.png" alt="Nitish"></div>
+          <div><div class="t-name">Nitish Kannan</div><div class="t-role">Senior AI Developer · Deloitte</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul sets the bar for intuitive Data Science understanding. His ability to understand a business use case and solve it was adept. He rapidly adapts to new functionalities adhering to timelines.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/chandra.jpg" alt="Chandra"></div>
+          <div><div class="t-name">Surya Chandra Teja</div><div class="t-role">Deputy Manager Data Scientist · Volvo</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title reveal">Let's <span class="grad">Connect</span></h2>
+    <div class="contact-grid">
+
+      <div class="reveal">
+        <p class="contact-tagline">Open to Senior AI / Data Science roles, GenAI consulting, and collaboration on cutting-edge AI projects.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:rahulgullu1997@gmail.com">
+            <div class="contact-link-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-link-text">
+              <div>Email</div>
+              <div>rahulgullu1997@gmail.com</div>
+            </div>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/rahul-ramesh97/" target="_blank">
+            <div class="contact-link-icon" style="background:rgba(10,102,194,0.12);border-color:rgba(10,102,194,0.25);color:#0a66c2;"><i class="fa-brands fa-linkedin"></i></div>
+            <div class="contact-link-text">
+              <div>LinkedIn</div>
+              <div>rahul-ramesh97</div>
+            </div>
+          </a>
+          <a class="contact-link" href="https://github.com/Rahulramesh97" target="_blank">
+            <div class="contact-link-icon" style="background:rgba(255,255,255,0.05);border-color:var(--border);color:var(--text);"><i class="fa-brands fa-github"></i></div>
+            <div class="contact-link-text">
+              <div>GitHub</div>
+              <div>Rahulramesh97</div>
+            </div>
+          </a>
+          <a class="contact-link" href="https://www.youtube.com/@rahul27812" target="_blank">
+            <div class="contact-link-icon" style="background:rgba(238,77,93,0.1);border-color:rgba(238,77,93,0.25);color:#ee4d5d;"><i class="fa-brands fa-youtube"></i></div>
+            <div class="contact-link-text">
+              <div>YouTube</div>
+              <div>Intuitive Mathematics</div>
+            </div>
+          </a>
+          <a class="contact-link" href="cv/Rahul_Ramesh_CV_2026.pdf" download="Rahul_Ramesh_CV_2026.pdf">
+            <div class="contact-link-icon" style="background:rgba(100,184,251,0.1);border-color:rgba(100,184,251,0.25);color:var(--blue2);"><i class="fa-solid fa-download"></i></div>
+            <div class="contact-link-text">
+              <div>Download CV</div>
+              <div>PDF Resume</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.15s">
+        <form class="contact-form" action="https://formspree.io/f/moqzjeyz" method="POST">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="replyto" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="What would you like to discuss?" required></textarea>
+          </div>
+          <input type="hidden" name="subject" value="Portfolio Contact">
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            <i class="fa-regular fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/rahul-ramesh97/" target="_blank" title="LinkedIn" style="color:#0a66c2;"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/Rahulramesh97" target="_blank" title="GitHub" style="color:#e6edf3;"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.youtube.com/@rahul27812" target="_blank" title="YouTube" style="color:#ff0000;"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://medium.com/@rahulr-80725/evaluation-metrics-in-machine-learning-19fada9f9fbb" target="_blank" title="Medium" style="color:#ffffff;"><i class="fa-brands fa-medium"></i></a>
+      <a href="https://www.instagram.com/rahulsdailymotivations/" target="_blank" title="Instagram" style="color:#e1306c;"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <div class="footer-name" style="color:#217bfe;">Rahul Ramesh</div>
+    <p>Senior AI Data Scientist · GenAI Architect · AI YouTuber</p>
+    <p style="margin-top:0.5rem;">© 2025 Rahul Ramesh. All rights reserved.</p>
+    <p style="margin-top:0.75rem;font-size:0.72rem;opacity:0.4;">Press ⌘K to navigate</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

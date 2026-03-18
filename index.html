@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rahul Ramesh — Senior AI Data Scientist & GenAI Architect. 6+ years building production AI. Architect of autonomous multi-agent systems at Nielsen. Google Gemini API Competition Highest Voted App Winner. Open to Senior AI roles.">
+  <meta name="keywords" content="Rahul Ramesh, Senior Data Scientist, GenAI Engineer, LangGraph, Multi-Agent AI, AWS SageMaker, Vertex AI, LangChain, RAG, Bengaluru AI Engineer">
+  <meta property="og:title" content="Rahul Ramesh — Senior AI Data Scientist & GenAI Architect">
+  <meta property="og:description" content="6+ years production AI. Multi-Agent Systems. Google Gemini Highest Voted App. Open to Senior AI roles.">
+  <title>Rahul Ramesh — Senior AI Data Scientist v2</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ══════════════════════════════════════
+   V2 ADDITIONS — Light Mode + Chat
+   ══════════════════════════════════════ */
+
+/* ── Mode Toggle Button ── */
+.mode-toggle {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 2px 8px rgba(0,0,0,0.2);
+}
+.mode-toggle:hover { background: rgba(255,255,255,0.10); color: white; border-color: rgba(255,255,255,0.22); }
+body.light-mode .mode-toggle {
+  background: rgba(33,123,254,0.08) !important;
+  border-color: rgba(33,123,254,0.25) !important;
+  color: #217bfe !important;
+}
+.nav-actions { display: flex; align-items: center; gap: 0.6rem; }
+
+/* ── Light Mode Core ── */
+body.light-mode {
+  --bg:      #ffffff;
+  --bg2:     #f5f7fb;
+  --bg3:     #eef1f7;
+  --bg4:     #e3e8f2;
+  --blue:    #217bfe;
+  --blue2:   #0844ff;
+  --purple:  #7c4dff;
+  --red:     #e53935;
+  --text:    #0d1117;
+  --muted:   #5a6385;
+  --subtle:  #374060;
+  --border:  rgba(33,123,254,0.14);
+  --border2: rgba(33,123,254,0.3);
+  --shadow:  0 2px 16px rgba(33,123,254,0.08);
+  background: #ffffff;
+  color: #0d1117;
+}
+
+/* Smooth transition when switching */
+body { transition: background 0.3s, color 0.3s; }
+
+/* Navbar */
+body.light-mode #navbar {
+  background: rgba(255,255,255,0.95) !important;
+  border-bottom: 1px solid rgba(33,123,254,0.12) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06) !important;
+}
+body.light-mode .nav-logo { color: #0d1117 !important; }
+body.light-mode .nav-links a { color: #5a6385 !important; }
+body.light-mode .nav-links a:hover { color: #0d1117 !important; }
+body.light-mode .nav-cmd {
+  background: rgba(33,123,254,0.06) !important;
+  border-color: rgba(33,123,254,0.2) !important;
+  color: #217bfe !important;
+  backdrop-filter: none !important;
+}
+
+/* Hero */
+body.light-mode #hero { background: linear-gradient(135deg, #f0f5ff 0%, #ffffff 60%); }
+body.light-mode #hero-canvas { opacity: 0.25; }
+body.light-mode .hero-badge {
+  background: rgba(33,123,254,0.06) !important;
+  border-color: rgba(33,123,254,0.2) !important;
+  color: #217bfe !important;
+  backdrop-filter: none !important;
+}
+body.light-mode .hero-name { color: #0d1117 !important; }
+body.light-mode .hero-title { color: #5a6385 !important; }
+body.light-mode .hero-title strong { color: #374060 !important; }
+body.light-mode .hero-photo { border-color: rgba(33,123,254,0.2) !important; box-shadow: 0 8px 32px rgba(33,123,254,0.12) !important; }
+body.light-mode .hero-photo-badge {
+  background: #ffffff !important;
+  border-color: rgba(33,123,254,0.2) !important;
+  color: #217bfe !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+}
+body.light-mode .scroll-line { background: linear-gradient(to bottom, #217bfe, transparent) !important; }
+body.light-mode .scroll-indicator { color: #5a6385 !important; }
+
+/* Buttons */
+body.light-mode .btn-outline {
+  background: #ffffff !important;
+  border-color: rgba(33,123,254,0.25) !important;
+  color: #217bfe !important;
+  backdrop-filter: none !important;
+}
+body.light-mode .btn-outline:hover {
+  background: rgba(33,123,254,0.05) !important;
+  border-color: rgba(33,123,254,0.5) !important;
+}
+
+/* Cards — white with shadow */
+body.light-mode .glass-light,
+body.light-mode .glass-card,
+body.light-mode .glass-panel,
+body.light-mode .tl-card,
+body.light-mode .agent-card,
+body.light-mode .gov-card,
+body.light-mode .video-card,
+body.light-mode .avarta-card,
+body.light-mode .testimonial-card,
+body.light-mode .orch-box,
+body.light-mode .result-banner {
+  background: #ffffff !important;
+  border: 1px solid rgba(33,123,254,0.1) !important;
+  box-shadow: 0 2px 16px rgba(33,123,254,0.06), 0 1px 4px rgba(0,0,0,0.04) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body.light-mode .tl-card:hover,
+body.light-mode .agent-card:hover,
+body.light-mode .gov-card:hover {
+  border-color: rgba(33,123,254,0.3) !important;
+  box-shadow: 0 8px 32px rgba(33,123,254,0.12), 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+body.light-mode .video-card:hover {
+  border-color: rgba(33,123,254,0.3) !important;
+  box-shadow: 0 8px 32px rgba(33,123,254,0.12) !important;
+}
+
+/* Stats / section backgrounds */
+body.light-mode #stats { background: #f5f7fb !important; border-color: rgba(33,123,254,0.1) !important; }
+body.light-mode .stat-item { border-color: rgba(33,123,254,0.1) !important; }
+body.light-mode #about { background: #ffffff !important; }
+body.light-mode #agents { background: #f5f7fb !important; }
+body.light-mode #experience { background: #ffffff !important; }
+body.light-mode #skills { background: #f5f7fb !important; }
+body.light-mode #avarta { background: #ffffff !important; }
+body.light-mode #studio { background: #f5f7fb !important; }
+body.light-mode #governance { background: #ffffff !important; }
+body.light-mode #testimonials { background: #f5f7fb !important; }
+body.light-mode #contact { background: #eef1f7 !important; }
+body.light-mode footer { background: #ffffff !important; border-color: rgba(33,123,254,0.1) !important; }
+
+/* Text in light mode */
+body.light-mode .about-text p { color: #5a6385 !important; }
+body.light-mode .about-text p strong { color: #0d1117 !important; }
+body.light-mode .section-sub { color: #5a6385 !important; }
+body.light-mode .tl-role { color: #5a6385 !important; }
+body.light-mode .tl-card ul li { color: #5a6385 !important; }
+body.light-mode .agent-card p { color: #5a6385 !important; }
+body.light-mode .gov-card p { color: #5a6385 !important; }
+body.light-mode .journey-content p { color: #5a6385 !important; }
+body.light-mode .t-quote { color: #374060 !important; }
+body.light-mode .t-role { color: #5a6385 !important; }
+body.light-mode .flow-label { color: #5a6385 !important; }
+body.light-mode .result-banner p { color: #374060 !important; }
+body.light-mode .contact-tagline { color: #5a6385 !important; }
+body.light-mode .avarta-card p { color: #5a6385 !important; }
+body.light-mode footer p { color: #5a6385 !important; }
+
+/* Pills / tags */
+body.light-mode .pill {
+  background: #f0f4ff !important;
+  border-color: rgba(33,123,254,0.18) !important;
+  color: #5a6385 !important;
+}
+body.light-mode .pill:hover { color: #0d1117 !important; border-color: rgba(33,123,254,0.4) !important; }
+body.light-mode .tl-tag {
+  background: rgba(33,123,254,0.07) !important;
+  color: #217bfe !important;
+  border-color: rgba(33,123,254,0.22) !important;
+}
+body.light-mode .tl-date { color: #217bfe !important; background: rgba(33,123,254,0.08) !important; border-color: rgba(33,123,254,0.18) !important; }
+body.light-mode .tech-tag {
+  background: #f0f4ff !important;
+  border-color: rgba(33,123,254,0.15) !important;
+  color: #5a6385 !important;
+}
+body.light-mode .tech-tag:hover { color: #217bfe !important; border-color: rgba(33,123,254,0.35) !important; }
+
+/* Icons / accents */
+body.light-mode .shield-wrap {
+  background: rgba(33,123,254,0.07) !important;
+  border-color: rgba(33,123,254,0.18) !important;
+}
+body.light-mode .agent-icon {
+  background: rgba(33,123,254,0.07) !important;
+}
+body.light-mode .yt-icon {
+  background: rgba(238,77,93,0.07) !important;
+  border-color: rgba(238,77,93,0.18) !important;
+}
+body.light-mode .avarta-gemini-badge {
+  background: rgba(33,123,254,0.07) !important;
+  border-color: rgba(33,123,254,0.22) !important;
+}
+body.light-mode .orch-box {
+  background: #ffffff !important;
+  border-color: rgba(33,123,254,0.18) !important;
+  box-shadow: 0 4px 24px rgba(33,123,254,0.08) !important;
+}
+body.light-mode .orch-box-sub { color: #5a6385 !important; }
+
+/* Timeline */
+body.light-mode .timeline::before { background: linear-gradient(to bottom, #217bfe, rgba(33,123,254,0)) !important; }
+body.light-mode .tl-dot { background: #ffffff !important; }
+
+/* Skill canvas */
+body.light-mode #skill-canvas { background: #ffffff !important; border-color: rgba(33,123,254,0.12) !important; }
+
+/* Contact form */
+body.light-mode .contact-link {
+  background: #ffffff !important;
+  border-color: rgba(33,123,254,0.12) !important;
+  backdrop-filter: none !important;
+}
+body.light-mode .contact-link:hover { border-color: rgba(33,123,254,0.35) !important; background: #f0f4ff !important; box-shadow: 0 4px 16px rgba(33,123,254,0.08) !important; }
+body.light-mode .contact-link-text div:first-child { color: #0d1117 !important; }
+body.light-mode .contact-link-text div:last-child { color: #5a6385 !important; }
+body.light-mode .form-group input,
+body.light-mode .form-group textarea {
+  background: #ffffff !important;
+  border-color: rgba(33,123,254,0.18) !important;
+  color: #0d1117 !important;
+  backdrop-filter: none !important;
+}
+body.light-mode .form-group input::placeholder,
+body.light-mode .form-group textarea::placeholder { color: #9aa3bc !important; }
+body.light-mode .form-group label { color: #5a6385 !important; }
+
+/* Mobile nav */
+body.light-mode .mobile-nav.open {
+  background: rgba(255,255,255,0.98) !important;
+  border-color: rgba(33,123,254,0.1) !important;
+}
+body.light-mode .mobile-nav a { color: #0d1117 !important; }
+
+/* Command palette */
+body.light-mode #cmd-overlay { background: rgba(240,244,255,0.85) !important; }
+body.light-mode #cmd-palette {
+  background: rgba(255,255,255,0.98) !important;
+  border-color: rgba(33,123,254,0.15) !important;
+  box-shadow: 0 24px 64px rgba(33,123,254,0.12) !important;
+}
+body.light-mode #cmd-input { color: #0d1117 !important; }
+body.light-mode .cmd-result-item { color: #374060 !important; }
+body.light-mode .cmd-result-item:hover,
+body.light-mode .cmd-result-item.selected { background: rgba(33,123,254,0.07) !important; }
+body.light-mode .cmd-key { color: #5a6385 !important; }
+body.light-mode .cmd-key kbd { background: #eef1f7 !important; border-color: rgba(33,123,254,0.15) !important; color: #374060 !important; }
+body.light-mode ::-webkit-scrollbar-thumb { background: rgba(33,123,254,0.3) !important; }
+body.light-mode .cmd-input-wrap { border-color: rgba(33,123,254,0.1) !important; }
+body.light-mode .cmd-footer { border-color: rgba(33,123,254,0.1) !important; }
+
+/* LangGraph canvas */
+body.light-mode #lg-canvas-wrap { border-color: rgba(33,123,254,0.12) !important; background: #ffffff !important; }
+body.light-mode .lg-legend { background: #f5f7fb !important; border-top-color: rgba(33,123,254,0.1) !important; }
+
+/* Scrollbar */
+body.light-mode ::-webkit-scrollbar-track { background: #f5f7fb !important; }
+
+/* ── LangGraph Interactive Visualization ── */
+#lg-canvas-wrap {
+  margin-top: 2.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+}
+#lg-canvas {
+  width: 100%;
+  height: 320px;
+  display: block;
+}
+.lg-legend {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+}
+.lg-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.lg-legend-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Chat Widget ── */
+#chat-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+#chat-toggle {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0844ff 0%, #64b8fb 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 20px rgba(33,123,254,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: chatPulse 3s ease-in-out infinite;
+}
+#chat-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(33,123,254,0.6); }
+@keyframes chatPulse {
+  0%,100% { box-shadow: 0 4px 20px rgba(33,123,254,0.45), 0 0 0 0 rgba(33,123,254,0.3); }
+  50%      { box-shadow: 0 4px 20px rgba(33,123,254,0.5), 0 0 0 14px rgba(33,123,254,0); }
+}
+#chat-panel {
+  width: 370px;
+  border-radius: 18px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(12,14,22,0.98);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.1);
+  transform-origin: bottom right;
+}
+#chat-panel.open {
+  display: flex;
+  animation: chatSlideIn 0.32s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes chatSlideIn {
+  from { opacity: 0; transform: scale(0.82) translateY(24px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+#chat-header {
+  padding: 1rem 1.25rem;
+  background: rgba(33,123,254,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.chat-header-info { display: flex; align-items: center; gap: 0.75rem; }
+.chat-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #0844ff, #64b8fb);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem; color: white; position: relative; flex-shrink: 0;
+}
+.chat-avatar::after {
+  content: '';
+  position: absolute; bottom: 1px; right: 1px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #22c55e; border: 2px solid rgba(12,14,22,0.98);
+}
+.chat-header-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+.chat-header-sub { font-size: 0.7rem; color: var(--muted); margin-top: 0.05rem; }
+#chat-close {
+  background: none; border: none; color: var(--muted);
+  cursor: pointer; font-size: 0.9rem; padding: 0.3rem;
+  border-radius: 6px; transition: color 0.2s, background 0.2s;
+}
+#chat-close:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-height: 340px;
+  min-height: 200px;
+}
+#chat-messages::-webkit-scrollbar { width: 4px; }
+#chat-messages::-webkit-scrollbar-thumb { background: rgba(33,123,254,0.4); border-radius: 2px; }
+.chat-msg { display: flex; flex-direction: column; gap: 0.22rem; max-width: 90%; }
+.chat-msg.user { align-self: flex-end; align-items: flex-end; }
+.chat-msg.bot  { align-self: flex-start; align-items: flex-start; }
+.chat-bubble {
+  padding: 0.65rem 0.95rem;
+  border-radius: 14px;
+  font-size: 0.845rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+.chat-msg.user .chat-bubble {
+  background: linear-gradient(135deg, #0844ff, #217bfe);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.chat-msg.bot .chat-bubble {
+  background: rgba(255,255,255,0.055);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-bottom-left-radius: 4px;
+}
+.chat-time { font-size: 0.63rem; color: var(--muted); }
+.chat-suggestions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
+.chat-chip {
+  font-size: 0.72rem;
+  padding: 0.28rem 0.72rem;
+  border-radius: 20px;
+  background: rgba(33,123,254,0.1);
+  border: 1px solid rgba(33,123,254,0.28);
+  color: var(--blue2);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.chat-chip:hover { background: rgba(33,123,254,0.22); border-color: rgba(33,123,254,0.5); color: white; }
+.chat-typing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.65rem 0.95rem;
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+  width: fit-content;
+}
+.typing-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--muted);
+  animation: typeBounce 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typeBounce {
+  0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-7px); opacity: 1; }
+}
+#chat-input-wrap {
+  padding: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+#chat-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#chat-input:focus { border-color: rgba(33,123,254,0.5); box-shadow: 0 0 0 3px rgba(33,123,254,0.08); }
+#chat-input::placeholder { color: var(--muted); opacity: 0.55; }
+#chat-send {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0844ff, #217bfe);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 0.85rem;
+  transition: transform 0.15s, opacity 0.15s;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(33,123,254,0.35);
+}
+#chat-send:hover { transform: scale(1.08); }
+
+</style>
+</head>
+<body>
+
+<!-- ══ COMMAND PALETTE ══ -->
+<div id="cmd-overlay">
+  <div id="cmd-palette">
+    <div class="cmd-input-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="cmd-input" type="text" placeholder="Jump to a section…" autocomplete="off">
+    </div>
+    <div id="cmd-results" class="cmd-results"></div>
+    <div class="cmd-footer">
+      <span class="cmd-key"><kbd>↑↓</kbd> Navigate</span>
+      <span class="cmd-key"><kbd>↵</kbd> Go</span>
+      <span class="cmd-key"><kbd>Esc</kbd> Close</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">Rahul<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#avarta">Projects</a></li>
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="mode-toggle" id="mode-toggle" title="Toggle Light Mode">
+      <i class="fa-solid fa-sun"></i> Light
+    </button>
+    <button class="nav-cmd" id="cmd-trigger">
+      <i class="fa-solid fa-magnifying-glass" style="font-size:0.75rem;"></i>
+      Search &nbsp;<kbd style="background:rgba(255,255,255,0.06);padding:0.1rem 0.4rem;border-radius:4px;border:1px solid rgba(255,255,255,0.1);font-size:0.72rem;">⌘K</kbd>
+    </button>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#about">About</a>
+  <a href="#agents">Agents</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#avarta">Projects</a>
+  <a href="#studio">Studio</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        Available for Senior AI Roles &amp; Collaborations
+      </div>
+      <h1 class="hero-name">
+        <span class="grad">Rahul</span><br>Ramesh
+      </h1>
+      <p class="hero-title">
+        <strong>Senior Data Scientist</strong> &nbsp;·&nbsp; GenAI Architect<br>
+        AI YouTuber &nbsp;·&nbsp; Google Gemini Highest Voted App Award Winner
+      </p>
+      <div class="hero-btns">
+        <a href="#agents" class="btn-primary">
+          <i class="fa-solid fa-robot"></i> See My Work
+        </a>
+        <a href="#contact" class="btn-outline">
+          <i class="fa-regular fa-paper-plane"></i> Get in Touch
+        </a>
+        <button class="btn-outline" id="cmd-trigger-hero" style="cursor:pointer;">
+          <i class="fa-solid fa-terminal"></i> ⌘K
+        </button>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <img src="images/Rahul profile photo.jpeg" alt="Rahul Ramesh" class="hero-photo">
+      <div class="hero-photo-badge">
+        <i class="fa-solid fa-trophy" style="color:#f59e0b;font-size:0.75rem;"></i>
+        &nbsp; Google Gemini · Highest Voted
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ══ STATS BAR ══ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="6" data-suffix="+">0</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="3" data-suffix="+ yrs">0</div>
+        <div class="stat-label">GenAI Specialization</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad2-num" data-target="6" data-suffix="+">0</div>
+        <div class="stat-label">LLMs Deployed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="100" data-suffix="%">0</div>
+        <div class="stat-label">Logic Coverage</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad2-num" data-target="5" data-suffix="% MAPE">0</div>
+        <div class="stat-label">Forecast Accuracy</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad-num" data-target="6" data-suffix="%">0</div>
+        <div class="stat-label">Fuel Efficiency Gain</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num grad2-num" data-target="20" data-suffix="%">0</div>
+        <div class="stat-label">Customer Cost Saved</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="section-label">WHO I AM</div>
+        <h2 class="section-title">
+          From Mechatronics<br>to Pioneering <span class="grad">GenAI</span>
+        </h2>
+        <p>Senior Data Scientist with <strong>6 years of experience</strong>, including a <strong>3+ year deep specialization in Generative AI</strong>. Currently at Nielsen, I architect autonomous multi-agent systems using LangGraph and build scalable ML forecasting pipelines on AWS SageMaker.</p>
+        <p>Previously at Honeywell and Volvo Trucks, delivering production-grade ML and GenAI solutions across supply chain, fuel efficiency, and audience measurement domains.</p>
+        <p>Hands-on expertise in <strong>LangChain, RAG architectures, Vector Databases,</strong> and <strong>LLM fine-tuning</strong>. Passionate about Responsible AI and mentoring junior scientists. Also a Math/AI YouTuber making complex AI concepts accessible — and a Google Gemini API Competition <strong>Highest Voted App</strong> winner.</p>
+        <div class="info-pills">
+          <span class="pill"><i class="fa-solid fa-location-dot"></i> Bengaluru, Karnataka</span>
+          <span class="pill"><i class="fa-solid fa-envelope"></i> rahulgullu1997@gmail.com</span>
+          <span class="pill"><i class="fa-solid fa-earth-asia"></i> EN · TA · HI · KN</span>
+          <span class="pill"><i class="fa-brands fa-youtube"></i> AI YouTuber</span>
+          <span class="pill"><i class="fa-solid fa-trophy"></i> Gemini Top-10</span>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.15s">
+        <div class="section-label">CAREER JOURNEY</div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="journey-content">
+            <small>2014 – 2020</small>
+            <h4>Mechanical &amp; Mechatronics Engineering</h4>
+            <p>Foundation in systems thinking, electronics, and mathematics — the bedrock of every model I build today.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot two"></div>
+          <div class="journey-content">
+            <small>2020 – 2024</small>
+            <h4>Classical ML → Production AI</h4>
+            <p>Built predictive pipelines at Dual Globe Solutions and Volvo Trucks. Mastered the full ML lifecycle from POC to deployment.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot three"></div>
+          <div class="journey-content">
+            <small>2024 – Present</small>
+            <h4>GenAI Architect &amp; Agent Builder</h4>
+            <p>Pioneering autonomous multi-agent systems at Nielsen. Driving GenAI adoption across Honeywell's VE/CE CoE using Vertex AI, GraphRAG, and LangGraph.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MULTI-AGENT SYSTEM ══ -->
+<section id="agents">
+  <div class="container">
+    <div class="section-label">NIELSEN — FLAGSHIP PROJECT</div>
+    <h2 class="section-title reveal">Autonomous <span class="grad">Multi-Agent</span> System</h2>
+    <p class="section-sub reveal">An orchestrated swarm of specialized AI agents that automate end-to-end validation of complex market research surveys — achieving 100% logic coverage across global markets.</p>
+
+    <div class="orchestrator reveal">
+      <div class="orch-box">
+        <div class="orch-pulse"></div>
+        <div class="orch-box-title">
+          <i class="fa-solid fa-microchip" style="color:var(--blue);margin-right:0.5rem;"></i>
+          LangGraph Orchestrator
+        </div>
+        <div class="orch-box-sub">Playwright · AWS SageMaker · Python</div>
+      </div>
+      <div class="orch-down"></div>
+    </div>
+
+    <div class="agent-flow reveal">
+      <div class="agent-card researcher">
+        <span class="agent-badge">AGENT 01</span>
+        <div class="agent-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>Researcher</h3>
+        <p>Ingests survey logic, maps question dependencies, and builds a semantic knowledge graph of all market research rules.</p>
+      </div>
+      <div class="flow-arrow">
+        <div class="flow-label">validates</div>
+        <div class="flow-line"></div>
+        <div class="flow-label" style="margin-top:4px">signals</div>
+        <div class="flow-line" style="background:linear-gradient(to left,var(--blue),var(--blue2))"></div>
+      </div>
+      <div class="agent-card navigator">
+        <span class="agent-badge">AGENT 02</span>
+        <div class="agent-icon"><i class="fa-solid fa-compass"></i></div>
+        <h3>Navigator</h3>
+        <p>Simulates real user behavior across survey flows using Playwright. Traverses branching logic and edge cases autonomously.</p>
+      </div>
+      <div class="flow-arrow">
+        <div class="flow-label">error feed</div>
+        <div class="flow-line" style="background:linear-gradient(to right,var(--blue2),var(--purple))"></div>
+        <div class="flow-label" style="margin-top:4px">confirms fix</div>
+        <div class="flow-line" style="background:linear-gradient(to left,var(--blue2),var(--purple))"></div>
+      </div>
+      <div class="agent-card healer">
+        <span class="agent-badge">AGENT 03</span>
+        <div class="agent-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h3>Healer</h3>
+        <p>Detects anomalies and logic failures surfaced by Navigator. Generates corrective patches and re-validates automatically.</p>
+      </div>
+    </div>
+
+    <!-- ── LangGraph Interactive Visualization ── -->
+    <div class="reveal" style="margin-top:3rem;">
+      <div class="section-label" style="margin-bottom:1rem;">INTERACTIVE FLOW · LANGGRAPH STATE MACHINE</div>
+      <div id="lg-canvas-wrap">
+        <canvas id="lg-canvas"></canvas>
+        <div class="lg-legend">
+          <div class="lg-legend-item"><div class="lg-legend-dot" style="background:#217bfe;"></div> Orchestrator</div>
+          <div class="lg-legend-item"><div class="lg-legend-dot" style="background:#22c55e;"></div> Active state</div>
+          <div class="lg-legend-item"><div class="lg-legend-dot" style="background:#64b8fb;"></div> Agent nodes</div>
+          <div class="lg-legend-item"><div class="lg-legend-dot" style="background:#ac87eb;"></div> Data flow</div>
+          <div class="lg-legend-item" style="color:var(--muted);font-size:0.75rem;margin-left:auto;font-style:italic;">Hover nodes to inspect</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agent-tech-tags reveal">
+      <span class="tech-tag">LangGraph</span>
+      <span class="tech-tag">Playwright</span>
+      <span class="tech-tag">AWS SageMaker</span>
+      <span class="tech-tag">Amazon S3</span>
+      <span class="tech-tag">LightGBM</span>
+      <span class="tech-tag">Multi-Agent Orchestration</span>
+      <span class="tech-tag">Market Research Automation</span>
+      <span class="tech-tag">Python</span>
+    </div>
+    <div class="result-banner reveal">
+      <p>
+        <strong>100%</strong> logic coverage across global survey markets &nbsp;·&nbsp;
+        <strong>5% MAPE</strong> on QI Media Value Index forecasting &nbsp;·&nbsp;
+        <strong>Zero manual validation</strong> overhead
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">CAREER</div>
+    <h2 class="section-title reveal">Work <span class="grad">Experience</span></h2>
+    <div class="timeline" style="margin-top:3rem;">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company grad">Nielsen</div>
+              <div class="tl-role">Senior Data Scientist – Audience Measurement · Bengaluru</div>
+            </div>
+            <div class="tl-date">Mar 2025 – Present</div>
+          </div>
+          <ul>
+            <li>Architected an Autonomous Multi-Agent System (Researcher, Navigator, Healer) using LangGraph + Playwright for end-to-end survey validation achieving <span class="tl-highlight">100% logic coverage</span> globally.</li>
+            <li>Designed and deployed a scalable ML forecasting pipeline on LightGBM (AWS S3 + SageMaker) for the QI Media Value Index achieving <span class="tl-highlight">5% MAPE</span>.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">LangGraph</span>
+            <span class="tl-tag">Multi-Agent</span>
+            <span class="tl-tag">Playwright</span>
+            <span class="tl-tag">AWS SageMaker</span>
+            <span class="tl-tag">LightGBM</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--blue2);"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company grad2">Honeywell</div>
+              <div class="tl-role">Data Scientist II – VE/CE COE · Bengaluru</div>
+            </div>
+            <div class="tl-date">Apr 2024 – Feb 2025</div>
+          </div>
+          <ul>
+            <li>Drove development of advanced Analytics, ML &amp; GenAI solutions within Honeywell's VE/CE CoE, optimizing supply chain and component engineering workflows.</li>
+            <li>Executed projects leveraging <span class="tl-highlight">Google Cloud Platform, Vertex AI,</span> and Snowflake for model training and deployment at scale.</li>
+            <li>Mentored and guided a high-performing team of junior scientists, interns, and AI engineers.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Vertex AI</span>
+            <span class="tl-tag">GCP</span>
+            <span class="tl-tag">Snowflake</span>
+            <span class="tl-tag">GenAI</span>
+            <span class="tl-tag">MLOps</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--purple);"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company" style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--purple);">Volvo Trucks</div>
+              <div class="tl-role">Data Scientist – Associate · Bengaluru</div>
+            </div>
+            <div class="tl-date">May 2021 – Mar 2024</div>
+          </div>
+          <ul>
+            <li>Designed ML pipeline for Fuel Efficiency prediction and used model coefficients for driver training — achieving <span class="tl-highlight">6% increase in fuel efficiency</span> and reduced carbon emissions.</li>
+            <li>Delivered DRIVE and MILE projects resulting in <span class="tl-highlight">20% reduction in customer costs</span>.</li>
+            <li>Full project lifecycle ownership: from POC creation and data engineering to model deployment.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">ML Pipelines</span>
+            <span class="tl-tag">Computer Vision</span>
+            <span class="tl-tag">IoT</span>
+            <span class="tl-tag">NLP</span>
+            <span class="tl-tag">Fleet Analytics</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--red);"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company" style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--muted);">Dual Globe Solutions</div>
+              <div class="tl-role">Data Scientist – Junior · Chennai</div>
+            </div>
+            <div class="tl-date">Mar 2020 – May 2021</div>
+          </div>
+          <ul>
+            <li>Performed data cleaning, statistical modelling, and built visualizations under senior guidance.</li>
+            <li>Designed a dynamic ML web app for predicting and classifying house images using Microsoft COCO transfer learning model.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Transfer Learning</span>
+            <span class="tl-tag">COCO</span>
+            <span class="tl-tag">Flask</span>
+            <span class="tl-tag">Statistics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS NETWORK ══ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">EXPERTISE</div>
+    <h2 class="section-title reveal">Skill <span class="grad">Network</span></h2>
+    <p class="section-sub reveal">Hover nodes to explore. Size reflects proficiency. Colors indicate domain cluster.</p>
+    <canvas id="skill-canvas" class="reveal"></canvas>
+    <div style="display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.5rem;" class="reveal">
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#217bfe;display:inline-block;flex-shrink:0;"></span>GenAI &amp; Agents</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#64b8fb;display:inline-block;flex-shrink:0;"></span>Cloud Platforms</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#ac87eb;display:inline-block;flex-shrink:0;"></span>ML / Deep Learning</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#ee4d5d;display:inline-block;flex-shrink:0;"></span>Core / APIs</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;"></span>Data / Warehousing</span>
+      <span style="display:flex;align-items:center;gap:0.45rem;font-size:0.8rem;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;"></span>DevOps / MLOps</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AVARTA LIFE ══ -->
+<section id="avarta">
+  <div class="container">
+    <div class="section-label">FEATURED PROJECT</div>
+    <div class="avarta-card reveal">
+      <div>
+        <div class="avarta-gemini-badge">
+          <i class="fa-solid fa-gem"></i>
+          Google Gemini API Competition — Highest Voted App
+        </div>
+        <h2>Avarta <span class="grad">Life</span></h2>
+        <p>A next-generation AI-powered avatar lifestyle application built for the Google Gemini API Competition. Leveraging Google's Gemini multimodal capabilities to create immersive, intelligent avatar experiences — awarded the <strong>Highest Voted App</strong> at the competition.</p>
+        <div class="avarta-features">
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-brain"></i></div>
+            Google Gemini API — multimodal intelligence at its core
+          </div>
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-bolt"></i></div>
+            Real-time avatar behavior powered by live data streams
+          </div>
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-comments"></i></div>
+            Conversational AI with contextual memory and persona
+          </div>
+          <div class="avarta-feat">
+            <div class="avarta-feat-icon"><i class="fa-solid fa-trophy"></i></div>
+            Highest Voted App — community favourite globally
+          </div>
+        </div>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://ai.google.dev/competition/projects/avarta-life?hl=en" target="_blank" class="btn-primary">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Project
+          </a>
+          <a href="https://github.com/Rahulramesh97" target="_blank" class="btn-outline">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="avarta-visual">
+        <div class="avarta-orb">
+          <div class="avarta-orb-ring"></div>
+          <div class="avarta-orb-ring2"></div>
+          <div class="avarta-orb-inner">
+            <div class="rank grad-num">#1</div>
+            <small>Highest Voted</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STUDIO ══ -->
+<section id="studio">
+  <div class="container">
+    <div class="section-label">CONTENT CREATOR</div>
+    <div class="studio-header reveal">
+      <div class="yt-icon"><i class="fa-brands fa-youtube"></i></div>
+      <div>
+        <h2 class="section-title" style="margin-bottom:0.3rem;">Intuitive <span class="grad">Mathematics</span></h2>
+        <p style="color:var(--muted);font-size:0.95rem;">Making complex AI &amp; Math concepts accessible to everyone</p>
+      </div>
+    </div>
+    <div class="video-grid">
+      <a class="video-card reveal" href="https://www.youtube.com/@rahul27812" target="_blank">
+        <div class="video-thumb vt-calculus">
+          <div class="vt-bg-art">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+              <defs>
+                <linearGradient id="gc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0844ff" stop-opacity="0.9"/><stop offset="100%" stop-color="#0a0e1a" stop-opacity="1"/></linearGradient>
+              </defs>
+              <rect width="400" height="225" fill="url(#gc1)"/>
+              <path d="M20,40 Q80,180 150,140 Q220,100 270,160 Q320,200 380,90" stroke="#64b8fb" stroke-width="2.5" fill="none" opacity="0.6"/>
+              <path d="M20,20 C60,20 90,180 180,160 C250,145 320,155 380,148" stroke="#217bfe" stroke-width="1.5" fill="none" opacity="0.35"/>
+              <line x1="0" y1="112" x2="400" y2="112" stroke="rgba(100,184,251,0.12)" stroke-width="1"/>
+              <line x1="200" y1="0" x2="200" y2="225" stroke="rgba(100,184,251,0.12)" stroke-width="1"/>
+              <circle cx="150" cy="140" r="5" fill="#64b8fb" opacity="0.9"/>
+              <circle cx="270" cy="160" r="5" fill="#64b8fb" opacity="0.7"/>
+              <circle cx="380" cy="90" r="10" fill="#217bfe" opacity="0.4"/>
+              <circle cx="380" cy="90" r="5" fill="#64b8fb" opacity="1"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.2rem;background:linear-gradient(to top,rgba(4,8,20,0.92) 0%,transparent 55%);">
+              <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#64b8fb;margin-bottom:0.3rem;text-transform:uppercase;">Calculus for AI</div>
+              <div style="font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25;">The Math Behind<br>Gradient Descent</div>
+            </div>
+          </div>
+          <div class="video-overlay"><div class="video-play"><i class="fa-solid fa-play"></i></div></div>
+        </div>
+        <div class="video-info">
+          <h4>The Math Behind Gradient Descent</h4>
+          <p>Intuitive Mathematics · AI Fundamentals</p>
+        </div>
+      </a>
+      <a class="video-card reveal" href="https://www.youtube.com/@rahul27812" target="_blank" style="transition-delay:0.1s">
+        <div class="video-thumb vt-transformer">
+          <div class="vt-bg-art">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+              <defs>
+                <linearGradient id="gt1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a0833"/><stop offset="100%" stop-color="#0d0618"/></linearGradient>
+              </defs>
+              <rect width="400" height="225" fill="url(#gt1)"/>
+              <line x1="60" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1" opacity="0.4"/>
+              <line x1="120" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="180" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="2" opacity="0.8"/>
+              <line x1="240" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="300" y1="50" x2="200" y2="112" stroke="#ac87eb" stroke-width="1" opacity="0.4"/>
+              <line x1="200" y1="112" x2="80" y2="175" stroke="#64b8fb" stroke-width="1" opacity="0.4"/>
+              <line x1="200" y1="112" x2="160" y2="175" stroke="#64b8fb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="200" y1="112" x2="240" y2="175" stroke="#64b8fb" stroke-width="1.5" opacity="0.6"/>
+              <line x1="200" y1="112" x2="320" y2="175" stroke="#64b8fb" stroke-width="1" opacity="0.4"/>
+              <circle cx="60" cy="50" r="8" fill="#ac87eb" opacity="0.7"/>
+              <circle cx="120" cy="50" r="8" fill="#ac87eb" opacity="0.8"/>
+              <circle cx="180" cy="50" r="8" fill="#ac87eb" opacity="0.9"/>
+              <circle cx="240" cy="50" r="8" fill="#ac87eb" opacity="0.8"/>
+              <circle cx="300" cy="50" r="8" fill="#ac87eb" opacity="0.7"/>
+              <circle cx="200" cy="112" r="18" fill="#ac87eb" opacity="0.15"/>
+              <circle cx="200" cy="112" r="11" fill="#ac87eb" opacity="0.9"/>
+              <circle cx="80" cy="175" r="7" fill="#64b8fb" opacity="0.7"/>
+              <circle cx="160" cy="175" r="7" fill="#64b8fb" opacity="0.8"/>
+              <circle cx="240" cy="175" r="7" fill="#64b8fb" opacity="0.8"/>
+              <circle cx="320" cy="175" r="7" fill="#64b8fb" opacity="0.7"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.2rem;background:linear-gradient(to top,rgba(10,4,24,0.95) 0%,transparent 50%);">
+              <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#ac87eb;margin-bottom:0.3rem;text-transform:uppercase;">LLM Internals</div>
+              <div style="font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25;">How Transformers<br>Actually Work</div>
+            </div>
+          </div>
+          <div class="video-overlay"><div class="video-play"><i class="fa-solid fa-play"></i></div></div>
+        </div>
+        <div class="video-info">
+          <h4>How Transformers Actually Work</h4>
+          <p>Intuitive Mathematics · Deep Learning</p>
+        </div>
+      </a>
+      <a class="video-card reveal" href="https://www.youtube.com/@rahul27812" target="_blank" style="transition-delay:0.2s">
+        <div class="video-thumb vt-agents">
+          <div class="vt-bg-art">
+            <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+              <defs>
+                <linearGradient id="ga1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#001f0a"/><stop offset="100%" stop-color="#060606"/></linearGradient>
+              </defs>
+              <rect width="400" height="225" fill="url(#ga1)"/>
+              <line x1="200" y1="85" x2="100" y2="155" stroke="#22c55e" stroke-width="1.5" opacity="0.55"/>
+              <line x1="200" y1="85" x2="200" y2="170" stroke="#22c55e" stroke-width="1.5" opacity="0.55"/>
+              <line x1="200" y1="85" x2="300" y2="155" stroke="#22c55e" stroke-width="1.5" opacity="0.55"/>
+              <circle cx="200" cy="85" r="22" fill="#22c55e" opacity="0.12"/>
+              <circle cx="200" cy="85" r="14" fill="#22c55e" opacity="0.85"/>
+              <circle cx="100" cy="155" r="11" fill="#217bfe" opacity="0.85"/>
+              <circle cx="200" cy="170" r="11" fill="#217bfe" opacity="0.85"/>
+              <circle cx="300" cy="155" r="11" fill="#217bfe" opacity="0.85"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.2rem;background:linear-gradient(to top,rgba(4,12,4,0.95) 0%,transparent 50%);">
+              <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#22c55e;margin-bottom:0.3rem;text-transform:uppercase;">Agent Systems</div>
+              <div style="font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25;">Building Multi-Agent AI<br>with LangGraph</div>
+            </div>
+          </div>
+          <div class="video-overlay"><div class="video-play"><i class="fa-solid fa-play"></i></div></div>
+        </div>
+        <div class="video-info">
+          <h4>Building Multi-Agent AI with LangGraph</h4>
+          <p>Intuitive Mathematics · GenAI Engineering</p>
+        </div>
+      </a>
+    </div>
+    <div class="studio-cta reveal">
+      <a href="https://www.youtube.com/@rahul27812" target="_blank" class="btn-primary">
+        <i class="fa-brands fa-youtube"></i> Visit the Channel
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GOVERNANCE ══ -->
+<section id="governance">
+  <div class="container">
+    <div class="section-label">RESPONSIBLE AI</div>
+    <h2 class="section-title reveal">AI Governance <span class="grad">&amp; Ethics</span></h2>
+    <p class="section-sub reveal">Building AI that is not just powerful, but trustworthy, explainable, and fair.</p>
+    <div class="gov-grid">
+      <div class="gov-card reveal">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap"><i class="fa-solid fa-gauge-high"></i></div>
+        <h3>Evaluation Frameworks</h3>
+        <p>Leveraging DeepEval and custom harnesses to continuously benchmark LLM outputs for factuality, toxicity, and bias across production systems.</p>
+      </div>
+      <div class="gov-card reveal" style="transition-delay:0.1s">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap" style="background:rgba(172,135,235,0.1);border-color:rgba(172,135,235,0.2);color:var(--purple);"><i class="fa-solid fa-eye"></i></div>
+        <h3>Explainability &amp; Transparency</h3>
+        <p>Implementing SHAP, LIME, and attention visualization to ensure stakeholders understand model decisions in high-stakes domains.</p>
+      </div>
+      <div class="gov-card reveal" style="transition-delay:0.2s">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap" style="background:rgba(100,184,251,0.1);border-color:rgba(100,184,251,0.2);color:var(--blue2);"><i class="fa-solid fa-database"></i></div>
+        <h3>Data Governance</h3>
+        <p>Designing PII-safe pipelines and implementing data lineage tracking to ensure compliance with enterprise data governance standards.</p>
+      </div>
+      <div class="gov-card reveal" style="transition-delay:0.3s">
+        <div class="gov-tag"></div>
+        <div class="shield-wrap" style="background:rgba(238,77,93,0.1);border-color:rgba(238,77,93,0.2);color:var(--red);"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3>Bias &amp; Fairness</h3>
+        <p>Proactive bias auditing across demographic slices, ensuring ML models meet fairness criteria before production deployment in global markets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">RECOMMENDATIONS</div>
+    <h2 class="section-title reveal">What Colleagues <span class="grad">Say</span></h2>
+  </div>
+  <div class="testimonial-slider">
+    <div class="testimonial-track">
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul is one of the most competent and skilled techies I have come across. His technical expertise and comprehension of difficult challenges has accelerated over time. I can see his development as he continuously works on his skills and strives to fine tune them periodically.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/ramasamy.png" alt="Ramasamy Muthukrishnan"></div>
+          <div><div class="t-name">Ramasamy Muthukrishnan</div><div class="t-role">Senior Data Scientist · Bank of America</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul's potential and exuberance towards work is very high. He is a multi-tasking professional. I have personally seen him working with curiosity and expertise in solving problems as an individual as well as a team. I wish him all the luck for the upcoming hustles.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/jhansi.png" alt="Pulaganti Jhansi"></div>
+          <div><div class="t-name">Pulaganti Jhansi</div><div class="t-role">Business Analyst · Volvo</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Highly efficient is the phrase that comes to my mind when I think about Rahul. He has the intuitive ability to smartly handle himself in any situation. As a senior, I am proud that he has skyrocketed his knowledge and understanding about challenging problems.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/nitish.png" alt="Nitish Kannan"></div>
+          <div><div class="t-name">Nitish Kannan</div><div class="t-role">Senior AI Developer · Deloitte</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul sets the bar for an intuitive understanding of Data Science concepts. His ability to understand a business use case and solve it was adept. He rapidly adapts to new functionalities and makes sure he excels in them adhering to the timelines.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/chandra.jpg" alt="Surya Chandra Teja"></div>
+          <div><div class="t-name">Surya Chandra Teja</div><div class="t-role">Deputy Manager Data Scientist · Volvo</div></div>
+        </div>
+      </div>
+      <!-- Duplicates for infinite loop -->
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul is one of the most competent and skilled techies I have come across. His technical expertise and comprehension of difficult challenges has accelerated over time. I can see his development as he continuously works on his skills.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/ramasamy.png" alt="Ramasamy"></div>
+          <div><div class="t-name">Ramasamy Muthukrishnan</div><div class="t-role">Senior Data Scientist · Bank of America</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul's potential and exuberance towards work is very high. He is a multi-tasking professional. I have personally seen him working with curiosity and expertise in solving problems both individually and as a team player.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/jhansi.png" alt="Jhansi"></div>
+          <div><div class="t-name">Pulaganti Jhansi</div><div class="t-role">Business Analyst · Volvo</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Highly efficient is the phrase that comes to my mind when I think about Rahul. He has the intuitive ability to smartly handle himself in any situation. I am proud that he has skyrocketed his knowledge.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/nitish.png" alt="Nitish"></div>
+          <div><div class="t-name">Nitish Kannan</div><div class="t-role">Senior AI Developer · Deloitte</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote">Rahul sets the bar for intuitive Data Science understanding. His ability to understand a business use case and solve it was adept. He rapidly adapts to new functionalities adhering to timelines.</div>
+        <div class="t-author">
+          <div class="t-avatar"><img src="images/chandra.jpg" alt="Chandra"></div>
+          <div><div class="t-name">Surya Chandra Teja</div><div class="t-role">Deputy Manager Data Scientist · Volvo</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title reveal">Let's <span class="grad">Connect</span></h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-tagline">Open to Senior AI / Data Science roles, GenAI consulting, and collaboration on cutting-edge AI projects.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:rahulgullu1997@gmail.com">
+            <div class="contact-link-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-link-text"><div>Email</div><div>rahulgullu1997@gmail.com</div></div>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/rahul-ramesh97/" target="_blank">
+            <div class="contact-link-icon" style="background:rgba(10,102,194,0.12);border-color:rgba(10,102,194,0.25);color:#0a66c2;"><i class="fa-brands fa-linkedin"></i></div>
+            <div class="contact-link-text"><div>LinkedIn</div><div>rahul-ramesh97</div></div>
+          </a>
+          <a class="contact-link" href="https://github.com/Rahulramesh97" target="_blank">
+            <div class="contact-link-icon" style="background:rgba(255,255,255,0.05);border-color:var(--border);color:var(--text);"><i class="fa-brands fa-github"></i></div>
+            <div class="contact-link-text"><div>GitHub</div><div>Rahulramesh97</div></div>
+          </a>
+          <a class="contact-link" href="https://www.youtube.com/@rahul27812" target="_blank">
+            <div class="contact-link-icon" style="background:rgba(238,77,93,0.1);border-color:rgba(238,77,93,0.25);color:#ee4d5d;"><i class="fa-brands fa-youtube"></i></div>
+            <div class="contact-link-text"><div>YouTube</div><div>Intuitive Mathematics</div></div>
+          </a>
+          <a class="contact-link" href="cv/Rahul_Ramesh_CV_2026.pdf" download="Rahul_Ramesh_CV_2026.pdf">
+            <div class="contact-link-icon" style="background:rgba(100,184,251,0.1);border-color:rgba(100,184,251,0.25);color:var(--blue2);"><i class="fa-solid fa-download"></i></div>
+            <div class="contact-link-text"><div>Download CV</div><div>PDF Resume</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.15s">
+        <form class="contact-form" action="https://formspree.io/f/moqzjeyz" method="POST">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="replyto" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="What would you like to discuss?" required></textarea>
+          </div>
+          <input type="hidden" name="subject" value="Portfolio Contact">
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            <i class="fa-regular fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/rahul-ramesh97/" target="_blank" title="LinkedIn" style="color:#0a66c2;"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/Rahulramesh97" target="_blank" title="GitHub" style="color:#e6edf3;"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.youtube.com/@rahul27812" target="_blank" title="YouTube" style="color:#ff0000;"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://medium.com/@rahulr-80725/evaluation-metrics-in-machine-learning-19fada9f9fbb" target="_blank" title="Medium" style="color:#ffffff;"><i class="fa-brands fa-medium"></i></a>
+      <a href="https://www.instagram.com/rahulsdailymotivations/" target="_blank" title="Instagram" style="color:#e1306c;"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <div class="footer-name" style="color:#217bfe;">Rahul Ramesh</div>
+    <p>Senior AI Data Scientist · GenAI Architect · AI YouTuber</p>
+    <p style="margin-top:0.5rem;">© 2026 Rahul Ramesh. All rights reserved.</p>
+    <p style="margin-top:0.75rem;font-size:0.72rem;opacity:0.4;">Press ⌘K to navigate · <i class="fa-solid fa-sun" style="font-size:0.65rem;"></i> Light mode available</p>
+  </div>
+</footer>
+
+<!-- ══ CHAT WIDGET ══ -->
+<div id="chat-widget">
+  <div id="chat-panel">
+    <div id="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+        <div>
+          <div class="chat-header-title">Chat with Rahul's Resume</div>
+          <div class="chat-header-sub">Powered by CV knowledge base · Always online</div>
+        </div>
+      </div>
+      <button id="chat-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-wrap">
+      <input id="chat-input" type="text" placeholder="Ask about experience, skills, projects…" autocomplete="off">
+      <button id="chat-send"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button id="chat-toggle" title="Chat with my Resume">
+    <i class="fa-solid fa-robot"></i>
+  </button>
+</div>
+
+<script src="js/main.js"></script>
+
+<script>
+/* ══════════════════════════════════════
+   V2 FEATURES — Terminal Mode + Chat + LangGraph Canvas
+   ══════════════════════════════════════ */
+
+// ── Light Mode Toggle ──
+(function initLightMode() {
+  const btn = document.getElementById('mode-toggle');
+  if (!btn) return;
+  const isOn = () => document.body.classList.contains('light-mode');
+
+  // Restore from localStorage
+  if (localStorage.getItem('lightMode') === 'true') {
+    document.body.classList.add('light-mode');
+    btn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark';
+  }
+
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    btn.innerHTML = isOn()
+      ? '<i class="fa-solid fa-moon"></i> Dark'
+      : '<i class="fa-solid fa-sun"></i> Light';
+    localStorage.setItem('lightMode', isOn());
+  });
+})();
+
+// ── LangGraph Interactive State Machine Canvas ──
+(function initLangGraph() {
+  const canvas = document.getElementById('lg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = 320;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const NODES = [
+    { id: 'start',      label: 'START',       x: 0.08, y: 0.5,  r: 18, color: '#22c55e', sub: 'Entry point' },
+    { id: 'orch',       label: 'Orchestrator', x: 0.26, y: 0.5,  r: 28, color: '#217bfe', sub: 'LangGraph' },
+    { id: 'researcher', label: 'Researcher',   x: 0.50, y: 0.18, r: 24, color: '#64b8fb', sub: 'Agent 01' },
+    { id: 'navigator',  label: 'Navigator',    x: 0.50, y: 0.5,  r: 24, color: '#64b8fb', sub: 'Agent 02' },
+    { id: 'healer',     label: 'Healer',       x: 0.50, y: 0.82, r: 24, color: '#ac87eb', sub: 'Agent 03' },
+    { id: 'validate',   label: 'Validate',     x: 0.72, y: 0.5,  r: 22, color: '#217bfe', sub: 'State check' },
+    { id: 'end',        label: 'END',          x: 0.92, y: 0.5,  r: 18, color: '#22c55e', sub: '100% coverage' },
+  ];
+
+  const EDGES = [
+    { from: 'start',      to: 'orch',       label: 'dispatch' },
+    { from: 'orch',       to: 'researcher', label: 'ingest' },
+    { from: 'orch',       to: 'navigator',  label: 'simulate' },
+    { from: 'orch',       to: 'healer',     label: 'heal' },
+    { from: 'researcher', to: 'validate',   label: 'knowledge graph' },
+    { from: 'navigator',  to: 'validate',   label: 'survey traversal' },
+    { from: 'healer',     to: 'validate',   label: 'patch + retry' },
+    { from: 'validate',   to: 'end',        label: 'verified' },
+    { from: 'validate',   to: 'orch',       label: 're-route' },
+  ];
+
+  // Animated packet travelling along each edge
+  const packets = EDGES.map((e, i) => ({ edge: i, t: Math.random(), speed: 0.003 + Math.random() * 0.004, active: true }));
+
+  let hovered = null;
+  let animT = 0;
+
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    hovered = null;
+    for (const n of NODES) {
+      const nx = n.x * canvas.width;
+      const ny = n.y * canvas.height;
+      if (Math.hypot(mx - nx, my - ny) < n.r + 8) { hovered = n.id; break; }
+    }
+    canvas.style.cursor = hovered ? 'pointer' : 'default';
+  });
+  canvas.addEventListener('mouseleave', () => { hovered = null; });
+
+  function isLight() { return document.body.classList.contains('light-mode'); }
+
+  function draw() {
+    requestAnimationFrame(draw);
+    animT += 0.018;
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    const lm = isLight();
+    const edgeColor  = lm ? 'rgba(33,123,254,0.25)' : 'rgba(100,184,251,0.35)';
+    const labelColor = lm ? '#5a6385' : 'rgba(100,184,251,0.7)';
+    const pktColor   = lm ? '#217bfe' : '#64b8fb';
+
+    // Draw edges
+    for (const edge of EDGES) {
+      const a = NODES.find(n => n.id === edge.from);
+      const b = NODES.find(n => n.id === edge.to);
+      const ax = a.x * W, ay = a.y * H;
+      const bx = b.x * W, by = b.y * H;
+
+      // Curved path for same-column edges
+      ctx.beginPath();
+      const dx = bx - ax, dy = by - ay;
+      const cx1 = ax + dx * 0.4 + dy * 0.2;
+      const cy1 = ay + dy * 0.4 - dx * 0.1;
+      ctx.moveTo(ax, ay);
+      ctx.quadraticCurveTo(cx1, cy1, bx, by);
+      ctx.strokeStyle = (hovered === a.id || hovered === b.id)
+        ? (lm ? 'rgba(33,123,254,0.75)' : 'rgba(100,184,251,0.75)')
+        : edgeColor;
+      ctx.lineWidth = (hovered === a.id || hovered === b.id) ? 2 : 1.2;
+      ctx.stroke();
+
+      // Edge label at midpoint
+      const lx = ax + dx * 0.5 + dy * 0.1;
+      const ly = ay + dy * 0.5 - dx * 0.05;
+      ctx.font = '500 9.5px DM Sans, sans-serif';
+      ctx.fillStyle = labelColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(edge.label, lx, ly - 8);
+    }
+
+    // Animated packets
+    for (const pkt of packets) {
+      pkt.t += pkt.speed;
+      if (pkt.t > 1) pkt.t = 0;
+      const edge = EDGES[pkt.edge];
+      const a = NODES.find(n => n.id === edge.from);
+      const b = NODES.find(n => n.id === edge.to);
+      const ax = a.x * W, ay = a.y * H;
+      const bx = b.x * W, by = b.y * H;
+      const dx = bx - ax, dy = by - ay;
+      const t = pkt.t;
+      // Follow quadratic curve
+      const cx1 = ax + dx * 0.4 + dy * 0.2;
+      const cy1 = ay + dy * 0.4 - dx * 0.1;
+      const px = (1-t)*(1-t)*ax + 2*(1-t)*t*cx1 + t*t*bx;
+      const py = (1-t)*(1-t)*ay + 2*(1-t)*t*cy1 + t*t*by;
+
+      ctx.beginPath();
+      ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = pktColor;
+      ctx.globalAlpha = 0.85;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      // Glow
+      const grd = ctx.createRadialGradient(px, py, 0, px, py, 10);
+      grd.addColorStop(0, pktColor + '55');
+      grd.addColorStop(1, 'transparent');
+      ctx.beginPath();
+      ctx.arc(px, py, 10, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+    }
+
+    // Draw nodes
+    for (const n of NODES) {
+      const nx = n.x * W, ny = n.y * H;
+      const isHov = hovered === n.id;
+      const scale = isHov ? 1.18 : 1;
+      const r = n.r * scale;
+
+      // Pulse ring for orchestrator
+      if (n.id === 'orch') {
+        const pulse = (Math.sin(animT) + 1) / 2;
+        ctx.beginPath();
+        ctx.arc(nx, ny, r + 10 + pulse * 6, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(33,123,254,' + (0.15 + pulse * 0.15) + ')';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      // Node fill
+      const nodeColor = n.color;
+      ctx.beginPath();
+      ctx.arc(nx, ny, r, 0, Math.PI * 2);
+      ctx.fillStyle = nodeColor + (isHov ? '28' : '14');
+      ctx.fill();
+      ctx.strokeStyle = nodeColor + (isHov ? 'ee' : '88');
+      ctx.lineWidth = isHov ? 2.5 : 1.5;
+      ctx.stroke();
+
+      // Label
+      ctx.font = `${isHov ? 700 : 600} ${Math.max(9, r * 0.42)}px Outfit, sans-serif`;
+      ctx.fillStyle = isHov ? (lm ? n.color : '#fff') : n.color + 'dd';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, nx, ny);
+
+      // Sub-label on hover
+      if (isHov) {
+        ctx.font = '400 9px DM Sans, sans-serif';
+        ctx.fillStyle = lm ? 'rgba(90,99,133,0.8)' : 'rgba(255,255,255,0.55)';
+        ctx.fillText(n.sub, nx, ny + r + 14);
+      }
+    }
+  }
+  draw();
+})();
+
+// ── Chat with Resume ──
+(function initChat() {
+  const toggle   = document.getElementById('chat-toggle');
+  const panel    = document.getElementById('chat-panel');
+  const closeBtn = document.getElementById('chat-close');
+  const input    = document.getElementById('chat-input');
+  const sendBtn  = document.getElementById('chat-send');
+  const messages = document.getElementById('chat-messages');
+  if (!toggle || !panel) return;
+
+  // ── CV Knowledge Base ──
+  const kb = [
+    {
+      patterns: ['hello','hi','hey','what can','who are','about you','help'],
+      response: "Hi! I'm Rahul's AI assistant with access to his full CV. Try asking:\n• **\"How many years of experience?\"**\n• **\"What tech stack do you use?\"**\n• **\"Tell me about Nielsen\"**\n• **\"What's the Gemini award?\"**\n• **\"How do I contact Rahul?\"**"
+    },
+    {
+      patterns: ['experience','years','how long','career','background'],
+      response: "Rahul has **6+ years** in AI/ML, including **3+ years specialising in Generative AI**:\n\n🔵 **Nielsen** — Senior Data Scientist (Mar 2025–Present)\n🔵 **Honeywell** — Data Scientist II (Apr 2024–Feb 2025)\n🔵 **Volvo Trucks** — Data Scientist Associate (May 2021–Mar 2024)\n🔵 **Dual Globe Solutions** — Junior Data Scientist (Mar 2020–May 2021)"
+    },
+    {
+      patterns: ['skill','tech','stack','tool','framework','language','python','know','proficient'],
+      response: "Rahul's core technical stack:\n\n🤖 **GenAI**: LangGraph, LangChain, CrewAI, GraphRAG, RAG, Autogen, DeepEval\n☁️ **Cloud**: AWS SageMaker, GCP Vertex AI, BigQuery, Snowflake, Spark\n🧠 **ML/DL**: TensorFlow, PyTorch, LightGBM, Scikit-learn, Keras\n🐍 **Core**: Python, FastAPI, Flask, SQL\n⚙️ **MLOps**: Docker, Kubernetes, MLflow, Git, GitHub"
+    },
+    {
+      patterns: ['nielsen','audience','survey','measurement','current role','present'],
+      response: "At **Nielsen** (Mar 2025–Present), Rahul is a Senior Data Scientist building:\n\n🔹 **Autonomous Multi-Agent System** — LangGraph + Playwright swarm (Researcher, Navigator, Healer) achieving **100% logic coverage** across global market research surveys\n🔹 **ML Forecasting Pipeline** — LightGBM on AWS S3 + SageMaker predicting the QI Media Value Index at **5% MAPE**"
+    },
+    {
+      patterns: ['honeywell','supply chain','component','vce','coe','ve/ce'],
+      response: "At **Honeywell** (Apr 2024–Feb 2025), Rahul worked in the VE/CE CoE:\n\n🔹 Developed advanced Analytics, ML & GenAI solutions for supply chain optimisation\n🔹 Leveraged **GCP, Vertex AI & Snowflake** for scalable model training and deployment\n🔹 Mentored junior scientists and AI engineers, driving innovation across the team"
+    },
+    {
+      patterns: ['volvo','fuel','truck','drive','mile','fleet','efficiency'],
+      response: "At **Volvo Trucks** (May 2021–Mar 2024), Rahul achieved:\n\n🔹 Designed ML pipeline for fuel efficiency prediction → **+6% fuel efficiency** and reduced carbon emissions\n🔹 DRIVE & MILE projects → **20% reduction in customer costs**\n🔹 Full lifecycle ownership: POC → data engineering → model deployment"
+    },
+    {
+      patterns: ['dual globe','junior','chennai','coco','transfer','house','first job'],
+      response: "At **Dual Globe Solutions** in Chennai (Mar 2020–May 2021), Rahul started as a Junior Data Scientist:\n\n🔹 Data cleaning, statistical modelling, and visualization\n🔹 Built a dynamic ML web app for house image classification using **Microsoft COCO transfer learning**"
+    },
+    {
+      patterns: ['education','degree','study','university','imarticus','mechatronics','mechanical'],
+      response: "Rahul's educational journey:\n\n🎓 **PG Program in AI** — Imarticus Learning (2020–2021)\n🔧 **ME in Mechatronics** (2018–2020)\n⚙️ **BE in Mechanical Engineering** (2014–2018)\n\nThis engineering background gives him a unique systems-thinking foundation for building scalable AI architectures."
+    },
+    {
+      patterns: ['gemini','avarta','google','competition','award','voted','recycling','top 10'],
+      response: "🏆 **Google Gemini API Developer Competition:**\n\nRahul led the development of **Avarta Life** — an AI-powered environmental protection & recycling app.\n\n✅ Received the **Most Popular Votes** award\n✅ Placed in the **Top 10 globally**\n✅ Featured: image recognition, environmental impact assessment, AI-powered chat\n✅ Powered by Google Gemini's multimodal API"
+    },
+    {
+      patterns: ['youtube','channel','video','content','math','intuitive','creator','teaching'],
+      response: "Rahul runs the **Intuitive Mathematics** YouTube channel:\n\n📐 The Math Behind Gradient Descent\n🤖 How Transformers Actually Work\n🔗 Building Multi-Agent AI with LangGraph\n📊 CNNs, Linear Algebra, Vectors & Matrices\n\nMaking complex AI & Math concepts accessible to everyone."
+    },
+    {
+      patterns: ['contact','email','reach','hire','available','open to','role','job','opportunity'],
+      response: "Rahul is **open to Senior AI / Data Science roles** and GenAI consulting:\n\n📧 **Email**: rahulgullu1997@gmail.com\n💼 **LinkedIn**: linkedin.com/in/rahul-ramesh97/\n🐙 **GitHub**: github.com/Rahulramesh97\n📍 **Location**: Bengaluru, Karnataka"
+    },
+    {
+      patterns: ['agent','langgraph','multi-agent','autonomous','orchestrator','researcher','navigator','healer','swarm'],
+      response: "The **Autonomous Multi-Agent System** at Nielsen:\n\n🔍 **Researcher** — Ingests survey logic, maps dependencies, builds a semantic knowledge graph\n🧭 **Navigator** — Simulates real user behavior across survey flows using Playwright\n💊 **Healer** — Detects anomalies, generates corrective patches, re-validates automatically\n\nOrchestrated by **LangGraph** → **100% logic coverage** globally."
+    },
+    {
+      patterns: ['rag','langchain','vector','retrieval','llm','fine-tun','finetun','embedding','pinecone','weaviate'],
+      response: "Rahul's GenAI/RAG expertise:\n\n🔹 **RAG architectures** — LangChain, Pinecone, Weaviate\n🔹 **GraphRAG** — knowledge-graph-enhanced retrieval\n🔹 **LLM fine-tuning** — 1 LLM fine-tuned in production\n🔹 **6 LLMs** deployed across projects\n🔹 Platforms: Gemini, GPT-4/5, Claude, open-source models"
+    },
+    {
+      patterns: ['responsible','governance','ethics','bias','fairness','explainability','shap','deepeval'],
+      response: "Rahul's Responsible AI practice:\n\n📊 **Evaluation** — DeepEval + custom harnesses for factuality, toxicity & bias benchmarking\n🔍 **Explainability** — SHAP, LIME, attention visualization\n🛡️ **Data Governance** — PII-safe pipelines, data lineage tracking\n⚖️ **Bias Auditing** — Demographic slice analysis before production deployment"
+    },
+    {
+      patterns: ['mlops','docker','kubernetes','deploy','pipeline','production','sagemaker','vertex'],
+      response: "Rahul's MLOps toolkit:\n\n🐳 **Containerisation**: Docker, Kubernetes\n☁️ **Cloud ML**: AWS SageMaker, GCP Vertex AI\n📦 **Storage**: Amazon S3, BigQuery, Snowflake\n🔄 **Pipelines**: End-to-end ML from ingestion to serving\n📈 **Monitoring**: Drift detection, model performance tracking"
+    },
+  ];
+
+  function respond(query) {
+    const q = query.toLowerCase();
+    for (const item of kb) {
+      if (item.patterns.some(p => q.includes(p))) return item.response;
+    }
+    return "I don't have that specific detail, but you can reach Rahul directly:\n📧 **rahulgullu1997@gmail.com**\n💼 **linkedin.com/in/rahul-ramesh97/**";
+  }
+
+  function fmt(text) {
+    return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+  }
+  function time() { return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }
+
+  function addMsg(role, text, chips) {
+    const el = document.createElement('div');
+    el.className = `chat-msg ${role}`;
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble';
+    bubble.innerHTML = fmt(text);
+    const ts = document.createElement('div');
+    ts.className = 'chat-time';
+    ts.textContent = time();
+    el.appendChild(bubble);
+    el.appendChild(ts);
+    if (chips && chips.length) {
+      const wrap = document.createElement('div');
+      wrap.className = 'chat-suggestions';
+      chips.forEach(label => {
+        const btn = document.createElement('button');
+        btn.className = 'chat-chip';
+        btn.textContent = label;
+        btn.addEventListener('click', () => { send(label); wrap.remove(); });
+        wrap.appendChild(btn);
+      });
+      el.appendChild(wrap);
+    }
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showTyping() {
+    const el = document.createElement('div');
+    el.className = 'chat-msg bot';
+    el.innerHTML = '<div class="chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+    return el;
+  }
+
+  function send(text) {
+    const q = text.trim();
+    if (!q) return;
+    addMsg('user', q);
+    input.value = '';
+    const typing = showTyping();
+    setTimeout(() => {
+      typing.remove();
+      addMsg('bot', respond(q));
+    }, 500 + Math.random() * 600);
+  }
+
+  // Open/close
+  let opened = false;
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.contains('open');
+    if (!isOpen) {
+      panel.classList.add('open');
+      panel.style.display = 'flex';
+      if (!opened) {
+        opened = true;
+        addMsg('bot', "Hi! I'm Rahul's CV assistant. Ask me anything about his experience, skills, or projects. 👋", ['Experience', 'Skills', 'Nielsen work', 'Contact']);
+      }
+      setTimeout(() => input.focus(), 150);
+      toggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    } else {
+      panel.classList.remove('open');
+      toggle.innerHTML = '<i class="fa-solid fa-robot"></i>';
+      setTimeout(() => { panel.style.display = 'none'; }, 300);
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    panel.classList.remove('open');
+    toggle.innerHTML = '<i class="fa-solid fa-robot"></i>';
+    setTimeout(() => { panel.style.display = 'none'; }, 300);
+  });
+
+  sendBtn.addEventListener('click', () => send(input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') send(input.value); });
+})();
+</script>
+</body>
+</html>
